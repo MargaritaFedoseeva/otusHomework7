@@ -1,0 +1,31 @@
+package ru.otus.components;
+
+import com.codeborne.selenide.SelenideElement;
+
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
+import static io.appium.java_client.AppiumBy.id;
+
+public class EditWishlistComponent extends AbsComponent<EditWishlistComponent>{
+    private final SelenideElement title =
+            root.$(id("ru.otus.wishlist:id/wishlist_edit_item"));
+
+    private final SelenideElement wishlistDescriptionInputField =
+            root.$(id("ru.otus.wishlist:id/description_input"));
+
+    private final SelenideElement saveButton =
+            root.$(id("ru.otus.wishlist:id/save_button"));
+
+    public EditWishlistComponent(SelenideElement root) {
+        super(root);
+    }
+
+    public void assertComponentTitle(String expected){
+        title.shouldBe(visible).shouldHave(text(expected));
+    }
+
+    public void editDescription(String description){
+        wishlistDescriptionInputField.shouldBe(visible).sendKeys(description);
+        saveButton.shouldBe(visible).click();
+    }
+}
