@@ -10,41 +10,41 @@ import ru.otus.attachments.DeviceLogService;
 import ru.otus.factory.AndroidDriverFactory;
 
 @NullMarked
-public class AndroidExtension implements TestInstancePostProcessor, BeforeEachCallback, AfterEachCallback, AfterTestExecutionCallback, TestExecutionExceptionHandler{
+public class AndroidExtension implements TestInstancePostProcessor, BeforeEachCallback, AfterEachCallback, AfterTestExecutionCallback, TestExecutionExceptionHandler {
 
-    private final AndroidDriverFactory factory = InjectorService.getInstance(AndroidDriverFactory.class);
-    private final DeviceLogService deviceLogService = InjectorService.getInstance(DeviceLogService.class);
+  private final AndroidDriverFactory factory = InjectorService.getInstance(AndroidDriverFactory.class);
+  private final DeviceLogService deviceLogService = InjectorService.getInstance(DeviceLogService.class);
 
-    @Override
+  @Override
 
-    public void afterEach(ExtensionContext context) {
-        WebDriver driver = WebDriverRunner.getWebDriver();
-        factory.quit(driver);
-    }
+  public void afterEach(ExtensionContext context) {
+    WebDriver driver = WebDriverRunner.getWebDriver();
+    factory.quit(driver);
+  }
 
-    @Override
-    public void beforeEach(ExtensionContext context) {
-        WebDriver driver = InjectorService.getInstance(WebDriver.class);
-        WebDriverRunner.setWebDriver(driver);
-        Selenide.open();
-    }
+  @Override
+  public void beforeEach(ExtensionContext context) {
+    WebDriver driver = InjectorService.getInstance(WebDriver.class);
+    WebDriverRunner.setWebDriver(driver);
+    Selenide.open();
+  }
 
-    @Override
-    public void postProcessTestInstance(Object testInstance, ExtensionContext context) {
-        InjectorService.injectMembers(testInstance);
+  @Override
+  public void postProcessTestInstance(Object testInstance, ExtensionContext context) {
+    InjectorService.injectMembers(testInstance);
 
-    }
+  }
 
-    @Override
-    public void afterTestExecution(ExtensionContext context) {
-        WebDriver driver = WebDriverRunner.getWebDriver();
-        deviceLogService.attach(driver);
-    }
+  @Override
+  public void afterTestExecution(ExtensionContext context) {
+    WebDriver driver = WebDriverRunner.getWebDriver();
+    deviceLogService.attach(driver);
+  }
 
-    @Override
-    public void handleTestExecutionException(ExtensionContext context, Throwable throwable) throws Throwable {
-        WebDriver driver = WebDriverRunner.getWebDriver();
-        deviceLogService.attach(driver);
-        throw throwable;
-    }
+  @Override
+  public void handleTestExecutionException(ExtensionContext context, Throwable throwable) throws Throwable {
+    WebDriver driver = WebDriverRunner.getWebDriver();
+    deviceLogService.attach(driver);
+    throw throwable;
+  }
 }

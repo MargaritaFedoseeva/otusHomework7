@@ -12,42 +12,42 @@ import static io.appium.java_client.AppiumBy.id;
 @Singleton
 public class MyWishlistsPage extends AbsBasePage {
 
-    private final WishlistContent wishlistContent =
-            new WishlistContent($(id("ru.otus.wishlist:id/wishlists_content")));
-    private final EditWishlistComponent editWishlistComponent =
-            new EditWishlistComponent($(id("ru.otus.wishlist:id/wishlist_edit_bottom_sheet")));
+  private final WishlistContent wishlistContent =
+      new WishlistContent($(id("ru.otus.wishlist:id/wishlists_content")));
+  private final EditWishlistComponent editWishlistComponent =
+      new EditWishlistComponent($(id("ru.otus.wishlist:id/wishlist_edit_bottom_sheet")));
 
-    public MyWishlistsPage assertNumberOfWishlists(int value){
-        wishlistContent.shouldBe(visible).assertSizeEqualTo(value);
-        return this;
-    }
+  public MyWishlistsPage assertNumberOfWishlists(int value) {
+    wishlistContent.shouldBe(visible).assertSizeEqualTo(value);
+    return this;
+  }
 
-    public MyWishlistsPage assertWishlistTitle(int index, String value){
-        getWishlistItem(index).assertTitleEqualsTo(value);
-        return this;
-    }
+  public MyWishlistsPage assertWishlistTitle(int index, String value) {
+    getWishlistItem(index).assertTitleEqualsTo(value);
+    return this;
+  }
 
-    public MyWishlistsPage assertWishlistSubtitle(int index, String value){
-        getWishlistItem(index).assertSubtitleEqualsTo(value);
-        return this;
-    }
+  public MyWishlistsPage assertWishlistSubtitle(int index, String value) {
+    getWishlistItem(index).assertSubtitleEqualsTo(value);
+    return this;
+  }
 
-    public MyWishlistsPage tapEditWishlist(int index){
-        getWishlistItem(index).tapEdit();
-        return this;
-    }
+  public MyWishlistsPage tapEditWishlist(int index) {
+    getWishlistItem(index).tapEdit();
+    return this;
+  }
 
-    private WishlistItem getWishlistItem(int index){
-        return wishlistContent.get(index).shouldBe(visible);
-    }
+  private WishlistItem getWishlistItem(int index) {
+    return wishlistContent.get(index).shouldBe(visible);
+  }
 
-    public MyWishlistsPage assertEditWishlistTitle(){
-        editWishlistComponent.assertComponentTitle("Изменить список жеданий");
-        return this;
-    }
+  public MyWishlistsPage assertEditWishlistTitle() {
+    editWishlistComponent.assertComponentTitle("Изменить список жеданий");
+    return this;
+  }
 
-    public MyWishlistsPage editWishlistDescription(String description){
-        editWishlistComponent.editDescription(description);
-        return this;
-    }
+  public MyWishlistsPage editWishlistDescription(String description) {
+    editWishlistComponent.editDescription(description);
+    return this;
+  }
 }

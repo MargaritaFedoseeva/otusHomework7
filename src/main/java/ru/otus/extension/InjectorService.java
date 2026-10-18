@@ -8,13 +8,13 @@ import ru.otus.factory.AndroidDriverModule;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class InjectorService {
-    private static final Injector INJECTOR = Guice.createInjector(new AndroidDriverModule());
+  private static final Injector INJECTOR = Guice.createInjector(new AndroidDriverModule());
 
-    public static void injectMembers(Object instance){
-        INJECTOR.injectMembers(instance);
-    }
+  public static void injectMembers(Object instance) {
+    INJECTOR.injectMembers(instance);
+  }
 
-    public static <T> T getInstance(Class<T> clazz){
-        return INJECTOR.getInstance(clazz);
-    }
+  public static <T> T getInstance(Class<T> clazz) {
+    return INJECTOR.getInstance(clazz);
+  }
 }

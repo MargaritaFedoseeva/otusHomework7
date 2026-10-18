@@ -8,17 +8,17 @@ import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 
 public class AndroidDriverModule extends AbstractModule {
-    @Provides
-    private WebDriver webDriver(AndroidDriverFactory factory){
-        return factory.create();
-    }
+  @Provides
+  private WebDriver webDriver(AndroidDriverFactory factory) {
+    return factory.create();
+  }
 
-    @Provides
-    @Singleton
-    private Capabilities capabilities(){
-        return new UiAutomator2Options()
-                .setApp("http://10.102.141.212:9021/download/wishlist.apk")
-                .fullReset()
-                .clearDeviceLogsOnStart();
-    }
+  @Provides
+  @Singleton
+  private Capabilities capabilities() {
+    return new UiAutomator2Options()
+        .setApp("http://10.244.0.4:9021/download/wishlist.apk")
+        .fullReset()
+        .clearDeviceLogsOnStart();
+  }
 }

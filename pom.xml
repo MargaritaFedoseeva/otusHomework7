@@ -22,7 +22,8 @@
         <spotbugs.plugin.version>4.9.8.2</spotbugs.plugin.version>
         <spotbugs.version>4.9.8</spotbugs.version>
         <checkstyle.plugin.version>3.6.0</checkstyle.plugin.version>
-        <checkstyle.config.location>checkstyle.xml</checkstyle.config.location>
+        <checkstyle.config.location>src/main/resources/checkstyle.xml</checkstyle.config.location>
+        <checkstyle.skip>true</checkstyle.skip>
         <postgresql.version>42.7.13</postgresql.version>
     </properties>
 

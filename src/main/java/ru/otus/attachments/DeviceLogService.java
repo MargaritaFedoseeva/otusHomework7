@@ -13,12 +13,12 @@ import java.util.List;
 @Singleton
 @AllArgsConstructor(onConstructor_ = @Inject)
 public class DeviceLogService {
-    private final FileUtils fileUtils;
+  private final FileUtils fileUtils;
 
-    @SneakyThrows
-    public void attach(WebDriver driver){
-        List<String> logs = driver.manage().logs().get("logcat").getAll().stream().map(Object::toString).toList();
-        String filename = "AndroidLogs%d.log".formatted(System.currentTimeMillis());
-        Files.write(fileUtils.getLogPath(filename),logs);
-    }
+  @SneakyThrows
+  public void attach(WebDriver driver) {
+    List<String> logs = driver.manage().logs().get("logcat").getAll().stream().map(Object::toString).toList();
+    String filename = "AndroidLogs%d.log".formatted(System.currentTimeMillis());
+    Files.write(fileUtils.getLogPath(filename), logs);
+  }
 }

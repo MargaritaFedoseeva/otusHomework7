@@ -10,8 +10,8 @@ import java.nio.file.Paths;
 
 @Singleton
 public class FileUtils {
-    @SneakyThrows
-    public Path getLogPath(String filename) {
-        return Files.createDirectories(Paths.get("logs")).resolve(filename);
-    }
+  @SneakyThrows
+  public Path getLogPath(String filename) {
+    return Files.createDirectories(Paths.get("logs")).resolve(filename);
+  }
 }
